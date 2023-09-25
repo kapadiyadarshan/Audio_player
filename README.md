@@ -1,16 +1,11 @@
 # audio_player
 
-A new Flutter project.
+<img src = "https://github.com/kapadiyadarshan/Audio_player/assets/121553877/3026b32c-9470-4006-acf8-b1fb5fcc6997" width = 300>
 
-## Getting Started
+<img src = "https://github.com/kapadiyadarshan/Audio_player/assets/121553877/cd2975e7-0db3-4ccd-839b-6d4a3cf94ccd" width = 300>
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+https://github.com/kapadiyadarshan/Audio_player/assets/121553877/70c3a277-77bd-4cc4-89fe-913a6b856303
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
