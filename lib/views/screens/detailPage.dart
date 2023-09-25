@@ -6,6 +6,7 @@ import 'package:audio_player/model/song_model.dart';
 import 'package:audio_player/utils/colors_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:like_button/like_button.dart';
 import 'package:provider/provider.dart';
 
 import '../components/gradient_slider.dart';
@@ -13,20 +14,11 @@ import '../components/gradient_slider.dart';
 class DetailPage extends StatelessWidget {
   DetailPage({super.key});
 
-  LinearGradient gradient = LinearGradient(
-    colors: [
-      Colors.pink,
-      Colors.blue,
-      Colors.orange,
-    ],
-  );
-
   @override
   Widget build(BuildContext context) {
-    // Map data = ModalRoute.of(context)!.settings.arguments as Map;
-    Song data = ModalRoute.of(context)!.settings.arguments as Song;
-
     return Consumer<AudioPlayerController>(builder: (context, provider, _) {
+      Song data = provider.getSongList[provider.songIndex];
+
       return Scaffold(
         body: Container(
           height: double.infinity,
@@ -246,13 +238,15 @@ class DetailPage extends StatelessWidget {
                         children: [
                           IconButton(
                             onPressed: () {
-                              provider.pause();
+                              provider.repeatSong();
                             },
                             icon: const Icon(Icons.repeat),
                             color: MyColors.white,
                           ),
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              provider.backwardSong();
+                            },
                             icon: Transform.rotate(
                               angle: pi,
                               child: const Icon(Icons.fast_forward),
@@ -299,15 +293,25 @@ class DetailPage extends StatelessWidget {
                                 },
                               )),
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              provider.forwardSong();
+                            },
                             icon: const Icon(Icons.fast_forward),
                             color: MyColors.white,
                           ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.favorite_border),
-                            color: MyColors.white,
-                          ),
+                          LikeButton(
+                            size: 24,
+                            likeBuilder: (isLiked) {
+                              return Icon(
+                                isLiked
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                size: 24,
+                                color:
+                                    isLiked ? Colors.redAccent : Colors.white,
+                              );
+                            },
+                          )
                         ],
                       )
                     ],

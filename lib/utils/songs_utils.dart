@@ -2,7 +2,7 @@ List<Map> songList = [
   {
     "id": 1,
     "name": "Heeriye",
-    "artist": "Arijit Singh",
+    "artist": "Arijit Singh, Jasleen Royal",
     "path": "asset/audio/heeriye.mp3",
   },
   {
@@ -50,13 +50,13 @@ List<Map> songList = [
   {
     "id": 9,
     "name": "Tere Pyaar Mein",
-    "artist": "	Arijit Singh",
+    "artist": "	Arijit Singh, Nikita Gandhi",
     "path": "asset/audio/tere_pyar_mein.mp3",
   },
   {
     "id": 1,
     "name": "Heeriye",
-    "artist": "Arijit Singh",
+    "artist": "Arijit Singh, Jasleen Royal",
     "path": "asset/audio/heeriye.mp3",
   },
   {
@@ -104,7 +104,7 @@ List<Map> songList = [
   {
     "id": 9,
     "name": "Tere Pyaar Mein",
-    "artist": "	Arijit Singh",
+    "artist": "	Arijit Singh, Nikita Gandhi",
     "path": "asset/audio/tere_pyar_mein.mp3",
   },
 ];

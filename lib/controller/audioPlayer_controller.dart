@@ -12,12 +12,16 @@ class AudioPlayerController extends ChangeNotifier {
 
   bool isPlay = false;
 
+  int songIndex = 0;
+  int playlistIndex = 0;
+
   initData({required int index}) {
     createSongList();
+    changeSong(index: index);
 
     audioController
         .open(
-      Audio(_songObjectList[index].path),
+      Audio(_songObjectList[songIndex].path),
       autoStart: true,
     )
         .then((value) {
@@ -26,6 +30,32 @@ class AudioPlayerController extends ChangeNotifier {
 
       notifyListeners();
     });
+  }
+
+  changeSong({required int index}) {
+    songIndex = index;
+    notifyListeners();
+  }
+
+  forwardSong() {
+    if (songIndex < 17) {
+      songIndex++;
+      initData(index: songIndex);
+    }
+    notifyListeners();
+  }
+
+  backwardSong() {
+    if (songIndex != 0) {
+      songIndex--;
+      initData(index: songIndex);
+    }
+    notifyListeners();
+  }
+
+  repeatSong() {
+    initData(index: songIndex);
+    notifyListeners();
   }
 
   pause() {
@@ -45,11 +75,6 @@ class AudioPlayerController extends ChangeNotifier {
     notifyListeners();
   }
 
-  pauseAndPlayButton() {
-    isPlay = audioController.isPlaying.value;
-    notifyListeners();
-  }
-
   List get getSongList {
     createSongList();
     return _songObjectList;
@@ -65,5 +90,10 @@ class AudioPlayerController extends ChangeNotifier {
         path: songList[index]["path"],
       ),
     );
+  }
+
+  changPlaylist({required int index}) {
+    playlistIndex = index;
+    notifyListeners();
   }
 }

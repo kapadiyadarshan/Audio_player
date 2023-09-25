@@ -144,8 +144,12 @@ class HomePage extends StatelessWidget {
                 options: CarouselOptions(
                   height: 260.0,
                   autoPlay: true,
-                  autoPlayAnimationDuration: const Duration(seconds: 4),
-                  autoPlayInterval: const Duration(seconds: 2),
+                  autoPlayAnimationDuration: const Duration(seconds: 3),
+                  // autoPlayInterval: const Duration(seconds: 1),
+                  enlargeCenterPage: true,
+                  onPageChanged: (index, reason) {
+                    provider.changPlaylist(index: index);
+                  },
                 ),
                 items: List.generate(
                   PlayList.length,
@@ -157,6 +161,47 @@ class HomePage extends StatelessWidget {
                       image: DecorationImage(
                         image: NetworkImage("${PlayList[index]}"),
                         fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 6,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: List.generate(
+                  PlayList.length,
+                  (index) => Container(
+                    height: 8,
+                    width: 8,
+                    margin: const EdgeInsets.all(1),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      // color: (provider.playlistIndex == index)
+                      //     ? Colors.pink
+                      //     : Colors.grey.withOpacity(0.5),
+                      gradient: LinearGradient(
+                        colors: (provider.playlistIndex == index)
+                            ? [
+                                Colors.pink.shade200,
+                                Colors.blue.shade200,
+                                Colors.orange.shade200,
+                              ]
+                            : [
+                                Colors.grey.withOpacity(0.5),
+                                Colors.grey.withOpacity(0.5),
+                                Colors.grey.withOpacity(0.5),
+                              ],
+                        stops: const [
+                          0.2,
+                          0.5,
+                          0.8,
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
                       ),
                     ),
                   ),
@@ -182,7 +227,7 @@ class HomePage extends StatelessWidget {
                           Navigator.pushNamed(
                             context,
                             MyRoute.DetailPage,
-                            arguments: temp,
+                            arguments: index,
                           );
                         },
                         leading: Container(
